@@ -49,14 +49,15 @@ ROOT_URLCONF = 'social_media.urls'
 # Database
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('DB_NAME', default='social_media'),
-        'USER': config('DB_USER', default='postgres'),
-        'PASSWORD': config('DB_PASSWORD', default='password'),
-        'HOST': config('DB_HOST', default='localhost'),
-        'PORT': config('DB_PORT', default='5432'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'social_media',
+        'USER': 'root',
+        'PASSWORD': '1234',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
+
 
 # REST Framework settings
 REST_FRAMEWORK = {
@@ -100,3 +101,22 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Custom user model
 AUTH_USER_MODEL = 'accounts.User'
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [],  # or just [] if you don't have a custom templates folder
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
+
+# static files (CSS, JavaScript, Images)
+STATIC_URL = '/static/'
